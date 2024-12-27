@@ -1,0 +1,28 @@
+@use "@styles/variables" as *;
+
+.navbar {
+  color: $secondary-text;
+  background-color: $secondary-bg;
+  font-family: $secondary-font;
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  height: clamp(2.5rem, 20vh, 5.625rem);
+
+  border-bottom: 1px solid $black;
+
+  padding: 0 2rem;
+
+  & a {
+    text-align: end;
+  }
+
+  & a:hover {
+    color: green;
+    letter-spacing: 2px;
+  }
+
+  &-selected {
+    text-decoration: underline;
+  }
+}

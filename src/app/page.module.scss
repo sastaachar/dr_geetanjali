@@ -1,0 +1,19 @@
+@use "@styles/variables" as *;
+@import "https://fonts.googleapis.com/css2?family=Afacad:wght@400&family=Tai+Heritage+Pro:wght@400&display=swap";
+
+.bodyContainer {
+  font-family: $primary-font;
+  letter-spacing: 1px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+  }
+}
+
+.mainContainer {
+  background-color: $primary-bg;
+  box-shadow: inset 0px 9px 37.8px 23px $white;
+}
