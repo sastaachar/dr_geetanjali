@@ -1,8 +1,7 @@
 @use "@styles/variables" as *;
-@import "https://fonts.googleapis.com/css2?family=Afacad:wght@400&family=Tai+Heritage+Pro:wght@400&display=swap";
 
 .bodyContainer {
-  font-family: $primary-font;
+  font-family: var(--font-afacad);
   letter-spacing: 1px;
   height: 100vh;
   display: flex;
@@ -10,10 +9,60 @@
 
   main {
     flex-grow: 1;
+    overflow: hidden;
   }
 }
 
 .mainContainer {
   background-color: $primary-bg;
   box-shadow: inset 0px 9px 37.8px 23px $white;
+  padding-left: $sideMargin;
+}
+
+.mainImgContainer {
+  position: relative;
+  overflow: hidden;
+}
+.mainImg {
+  position: absolute;
+  bottom: 0px;
+  object-fit: cover;
+  object-position: left;
+  max-height: 90%;
+  position: absolute;
+
+  // this is added cause the image needs to start clipping from left
+  // rest of time we need it in middle cause that have even spacing
+  @media (max-width: 1120px) {
+    left: 0px;
+  }
+}
+
+.leftSection {
+  color: $black;
+
+  padding-bottom: 5vh;
+
+  .heading {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 3rem;
+  }
+  .mainContent {
+    font-size: 1.2rem;
+    max-width: 60ch;
+    line-height: 2rem;
+    letter-spacing: 2px;
+  }
+  .actionButton {
+    background-color: $dark-pink;
+    font-family: "afacad";
+    color: $white;
+    font-weight: 400;
+    border-radius: 3px;
+    font-size: 2rem;
+    height: 3rem;
+    box-shadow: 2px 5px 11.1px 2px $dark-pink;
+    border: none;
+  }
 }

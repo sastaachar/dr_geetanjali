@@ -1,13 +1,13 @@
 .container {
   display: flex;
+
+  // default spacing
   justify-content: space-evenly;
   align-items: center;
+
+  // take everything leave nothing
   height: 100%;
   width: 100%;
-
-  & * {
-    flex-grow: 1;
-  }
 
   &_vertical {
     flex-direction: column;

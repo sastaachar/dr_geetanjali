@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import "./reset.css";
+import "@styles/reset.css";
 import { Navbar } from "@components/navbar";
 import styles from "./page.module.scss";
+import { cx } from "@utils";
+import { afacad, taiHeritagePro } from "@styles/font";
 
 // TODO: update this
 export const metadata: Metadata = {
@@ -16,11 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.bodyContainer} >
+      <body
+        className={cx(
+          styles.bodyContainer,
+          afacad.variable,
+          taiHeritagePro.variable
+        )}
+      >
         <nav>
           <Navbar />
         </nav>
-        <main className={styles.mainContainer} >{children}</main>
+        <main className={styles.mainContainer}>{children}</main>
       </body>
     </html>
   );

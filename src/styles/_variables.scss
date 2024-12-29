@@ -2,8 +2,8 @@
 $dark-blue: #000783;
 $light-pink: #fff6f6;
 $white: #ffffff;
-$black: #000000;
-$dark-pink: #FE8E9C;
+$black: #333;
+$dark-pink: #fe8e9c;
 
 // vars
 $primary-bg: $light-pink;
@@ -15,7 +15,9 @@ $secondary-text: $dark-blue;
 $highlight-bg: $dark-pink;
 $highlight-text: $white;
 
+// fonts
+$primary-font: "Afacad", sans-serif;
+$secondary-font: "Tai Heritage Pro", sans-serif;
 
-// fonts 
-$primary-font: 'Afacad', sans-serif;
-$secondary-font: 'Tai Heritage Pro', sans-serif;
+// spacings
+$sideMargin: 2rem;

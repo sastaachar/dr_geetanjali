@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { Logo } from "./logo";
 import { configs } from "../../app/config";
 import { t } from "@translation";
-import { Horizontal } from "@cute-style/container";
-import styles from "./navbar.module.scss"
+import { Horizontal, Vertical } from "@cute-style/container";
+import styles from "./navbar.module.scss";
+
+const Logo = () => {
+  return <h1 className={styles.navbarLogo}>{t("LOGO_MAIN")}</h1>;
+};
 
 export const MobileNavbar = () => {
   return (
@@ -23,7 +26,7 @@ export const DesktopNavbar = () => {
 
 const NavLinks = () => {
   return (
-    <Horizontal className={styles.navLinks} > 
+    <Horizontal className={styles.navLinks} justifyContent="space-between">
       <Link href={configs.navLinks.home}>{t("HOME")}</Link>
       <Link href={configs.navLinks.about}> {t("ABOUT_US")} </Link>
       <Link href={configs.navLinks.contact}>{t("CONTACT_US")}</Link>
@@ -34,8 +37,14 @@ const NavLinks = () => {
 export const Navbar = () => {
   return (
     <Horizontal className={styles.navbar}>
-      <Logo />
-      <NavLinks />
+      <Vertical parts={1}>
+        <Horizontal justifyContent="start">
+          <Logo />
+        </Horizontal>
+      </Vertical>
+      <Vertical parts={1}>
+        <NavLinks />
+      </Vertical>
     </Horizontal>
   );
 };
