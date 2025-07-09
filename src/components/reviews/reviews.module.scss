@@ -1,0 +1,33 @@
+@use "@styles/variables" as *;
+
+.reviews {
+  overflow: auto hidden; // Smooth scrolling without vertical scroll
+  width: 100%;
+  max-width: 500px;
+  scroll-behavior: smooth;
+  padding: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  height: 140px;
+  border-radius: 16px;
+}
+
+.review {
+  padding: 14px;
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 2px solid $primary-bg;
+  }
+
+  .rating {
+    color: gold;
+    font-size: 16px;
+  }
+
+  .rating-empty {
+    color: grey;
+    font-size: 16px;
+  }
+}

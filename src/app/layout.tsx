@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "@styles/reset.css";
 import { Navbar } from "@components/navbar";
-import styles from "./page.module.scss";
+import styles from "./global.module.scss";
 import { cx } from "@utils";
 import { afacad, taiHeritagePro } from "@styles/font";
+import "@cute-style/cutebar.scss";
 
 // TODO: update this
 export const metadata: Metadata = {

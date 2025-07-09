@@ -16,8 +16,8 @@ $highlight-bg: $dark-pink;
 $highlight-text: $white;
 
 // fonts
-$primary-font: "Afacad", sans-serif;
-$secondary-font: "Tai Heritage Pro", sans-serif;
+$primary-font: var(--font-afacad);
+$secondary-font: var(--font-taiHeritagePro);
 
 // spacings
 $sideMargin: 2rem;

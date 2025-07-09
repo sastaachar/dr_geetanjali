@@ -1,22 +1,25 @@
 @use "@styles/variables" as *;
 
 .bodyContainer {
-  font-family: var(--font-afacad);
   letter-spacing: 1px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-
+  font-family: $primary-font;
   main {
     flex-grow: 1;
     overflow: hidden;
+  }
+  input,
+  textarea,
+  button {
+    font-family: $primary-font;
   }
 }
 
 .mainContainer {
   background-color: $primary-bg;
   box-shadow: inset 0px 9px 37.8px 23px $white;
-  padding-left: $sideMargin;
 }
 
 .mainImgContainer {
@@ -56,7 +59,6 @@
   }
   .actionButton {
     background-color: $dark-pink;
-    font-family: "afacad";
     color: $white;
     font-weight: 400;
     border-radius: 3px;

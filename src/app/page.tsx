@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Horizontal, Vertical } from "@cute-style/container";
 import { t } from "@translation";
-import styles from "./page.module.scss";
+import styles from "./global.module.scss";
 import { Reviews } from "@components/reviews";
 
 const MainHomeImg = () => {
@@ -17,10 +17,11 @@ const MainHomeImg = () => {
   );
 };
 
-export default function Home() {
+export default async function Page() {
   const LeftSection = () => {
     return (
       <Vertical className={styles.leftSection} alignItem="start">
+        {/* Home heading content */}
         <Vertical
           className={styles.heading}
           alignItem="start"
@@ -30,13 +31,17 @@ export default function Home() {
           <p> {t("MAIN_HEADING_LINE_2")}</p>
         </Vertical>
 
+        {/* home main content */}
         <Vertical className={styles.mainContent}>{t("MAIN_CONTENT")}</Vertical>
 
+        {/* action button */}
         <Vertical alignItem="start">
           <button className={styles.actionButton}>
             {t("BOOK_APPOINTMENT")}
           </button>
         </Vertical>
+
+        {/* reviews */}
         <Horizontal>
           <Reviews />
         </Horizontal>
@@ -46,7 +51,7 @@ export default function Home() {
 
   return (
     <Horizontal>
-      <Vertical>
+      <Vertical className={styles.leftSection}>
         <LeftSection />
       </Vertical>
       <Vertical>
