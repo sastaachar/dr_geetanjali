@@ -34,11 +34,15 @@ const getStyleProps = (props: ContainerProps): React.CSSProperties => {
     props.debug_border_blue || props.debug_border_red
       ? `1px solid ${props.debug_border_blue ? "blue" : "red"}`
       : undefined;
+
+  const overflow = props.parts !== undefined ? "auto" : undefined;
+
   return cleanUndefined({
     justifyContent: props.justifyContent,
     flexGrow: props.parts,
     border: debugBorder,
     alignItems: props.alignItem,
+    overflow,
   });
 };
 

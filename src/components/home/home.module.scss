@@ -1,8 +1,9 @@
 @use "@styles/variables" as *;
 
 .leftSection {
-  color: $black;
   padding-left: $sideMargin;
+
+  // need to be relative to make the image background work
   position: relative;
 
   .heading {
@@ -18,11 +19,7 @@
     letter-spacing: 2px;
   }
 
-  &BgImage {
-    position: absolute;
-    bottom: 0px;
-    left: 20%;
-    z-index: -1;
-    opacity: 20%;
+  .highlighted {
+    color: $pink;
   }
 }
