@@ -1,0 +1,28 @@
+@use "@styles/variables" as *;
+
+.leftSection {
+  color: $black;
+  padding-left: $sideMargin;
+  position: relative;
+
+  .heading {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 4rem;
+    word-spacing: 0.2rem;
+  }
+  .mainContent {
+    font-size: 1.2rem;
+    max-width: 60ch;
+    line-height: 2rem;
+    letter-spacing: 2px;
+  }
+
+  &BgImage {
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+    z-index: -1;
+    opacity: 20%;
+  }
+}
