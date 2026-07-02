@@ -1,21 +1,52 @@
 ---
+import { Image } from "astro:assets";
 import { clinic } from "../data/clinic";
+import smile1 from "../assets/hero-smile.jpg";
+import smile2 from "../assets/hero-smile-2.jpg";
+import smile3 from "../assets/hero-smile-3.jpg";
+
+const heroImages = [
+  { src: smile1, alt: "A patient smiling while the dentist matches her tooth shade" },
+  { src: smile2, alt: "A dentist holding up a dental model" },
+  { src: smile3, alt: "A patient during a gentle dental check-up" },
+];
 ---
 
 <div class="wrap hero">
-  <h1>Gentle, precise dentistry for <em>every smile</em> in the family.</h1>
-  <p class="lede">
-    Implants, painless root canals and family dentistry by {clinic.doctor.name}, BDS —
-    in a modern, spotless clinic at Jambhulkar Chowk.
-  </p>
-  <div class="cta-row">
-    <button class="call-btn" data-book>Book an appointment</button>
+  <div class="hero-inner">
+    <h1 class="hero-title">Gentle, precise dentistry for <em>every smile</em> in the family.</h1>
+    <div class="hero-visual">
+      {heroImages.map((img, i) => (
+        <Image
+          class="hero-photo"
+          src={img.src}
+          alt={img.alt}
+          width={880}
+          loading="eager"
+          data-hero-img
+          hidden={i !== 0}
+        />
+      ))}
+    </div>
+    <script is:inline>
+      (function () {
+        var imgs = document.querySelectorAll("[data-hero-img]");
+        var pick = Math.floor(Math.random() * imgs.length);
+        imgs.forEach(function (img, i) { img.hidden = i !== pick; });
+      })();
+    </script>
+    <div class="hero-copy">
+      <p class="lede">
+        Implants, painless root canals and family dentistry by {clinic.doctor.name}, BDS —
+        in a modern, spotless clinic at Jambhulkar Chowk.
+      </p>
+      <div class="cta-row">
+        <button class="call-btn" data-book>Book an appointment</button>
+      </div>
+      <p class="rating">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <strong>{clinic.rating.value}</strong> on Google Reviews
+      </p>
+    </div>
   </div>
-  <p class="rating">
-    <span class="stars" aria-hidden="true">★★★★★</span>
-    <strong>{clinic.rating.value}</strong> on Google Reviews
-  </p>
-  <a class="scroll-cue" href="#results" aria-label="Scroll down to see results">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-  </a>
 </div>

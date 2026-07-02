@@ -24,6 +24,8 @@ import { clinic } from "../data/clinic";
     function onScroll() {
       if (window.scrollY > 120) header.setAttribute("data-scrolled", "");
       else header.removeAttribute("data-scrolled");
+      var hint = document.querySelector(".scroll-hint");
+      if (hint) hint.classList.toggle("is-hidden", window.scrollY > 120);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
