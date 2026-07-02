@@ -2,6 +2,8 @@
 
 Website for Dr. Geetanjali’s Dental Care, Wanwadi, Pune — built with [Astro](https://astro.build) (static output, zero client JS besides a small call-link fallback).
 
+**Live site:** https://sastaachar.github.io/dr_geetanjali/
+
 ## Develop
 
 ```sh
