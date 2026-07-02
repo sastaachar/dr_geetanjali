@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sastaachar.github.io/dr_geetanjali/sitemap-index.xml
+Sitemap: https://drgeetanjali.com/sitemap-index.xml
