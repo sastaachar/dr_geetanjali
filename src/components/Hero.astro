@@ -8,13 +8,11 @@ import { clinic } from "../data/clinic";
       <p class="eyebrow">Wanwadi · Pune</p>
       <h1>Gentle, precise dentistry for <em>every smile</em> in the family.</h1>
       <p class="lede">
-        From painless root canals to full-mouth implants, {clinic.doctor.name}, BDS, treats
-        every patient with the time, care and honesty a neighbourhood clinic should — in a
-        spotless, modern practice at Jambhulkar Chowk.
+        Implants, painless root canals and family dentistry by {clinic.doctor.name}, BDS —
+        in a modern, spotless clinic at Jambhulkar Chowk.
       </p>
       <div class="cta-row">
         <a class="call-btn" href={`tel:${clinic.phoneE164}`}>Book an appointment</a>
-        <a class="cta-secondary" href={clinic.whatsapp} rel="noopener">WhatsApp us</a>
       </div>
       <p class="rating">
         <span class="stars" aria-hidden="true">★★★★★</span>
@@ -28,9 +26,7 @@ import { clinic } from "../data/clinic";
           <tr><td>{h.days}</td><td>{h.time}</td></tr>
         ))}
       </table>
-      <p class="hours-note">
-        Open all week — evening and Sunday appointments available. Emergency dental care on call.
-      </p>
+      <p class="hours-note">Open all week, with emergency care on call.</p>
     </aside>
   </div>
 </div>

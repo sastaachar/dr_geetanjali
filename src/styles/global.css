@@ -52,8 +52,8 @@ nav a { text-decoration: none; color: var(--ink); font-size: 0.95rem; }
 nav a:hover { color: var(--rose); }
 .call-btn {
   background: var(--rose); color: #fff; text-decoration: none;
-  padding: 0.55rem 1.1rem; border-radius: 3px; font-weight: 600; font-size: 0.95rem;
-  white-space: nowrap;
+  padding: 0.65rem 1.5rem; border-radius: 999px; font-weight: 500; font-size: 0.9rem;
+  letter-spacing: 0.03em; white-space: nowrap;
 }
 .call-btn:hover { background: var(--berry); }
 @media (max-width: 800px) { nav { display: none; } }
@@ -68,7 +68,8 @@ nav a:hover { color: var(--rose); }
 .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
 .cta-secondary {
   border: 1.5px solid var(--rose); color: var(--rose); text-decoration: none;
-  padding: 0.55rem 1.1rem; border-radius: 3px; font-weight: 600; font-size: 0.95rem;
+  padding: 0.6rem 1.5rem; border-radius: 999px; font-weight: 500; font-size: 0.9rem;
+  letter-spacing: 0.03em; white-space: nowrap;
 }
 .cta-secondary:hover { background: var(--blush); }
 .rating { display: flex; align-items: center; gap: 0.6rem; margin-top: 2.25rem; color: var(--grey); font-size: 0.95rem; }
