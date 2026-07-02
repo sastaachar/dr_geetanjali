@@ -1,19 +1,24 @@
 ---
+import { Image } from "astro:assets";
+import doctor from "../assets/doctor.jpeg";
 import { clinic } from "../data/clinic";
 ---
 
 <section id="about">
   <div class="wrap about-grid">
-    <dl class="cred">
-      <dt>Qualification</dt>
-      <dd>{clinic.doctor.qualification}</dd>
-      <dt>Practice</dt>
-      <dd>{clinic.name} · Implantology, Wanwadi, Pune</dd>
-      <dt>Focus</dt>
-      <dd>Implantology, painless endodontics, family &amp; pediatric dentistry</dd>
-      <dt>Patients say</dt>
-      <dd>{clinic.rating.value}★ across {clinic.rating.count} Google reviews</dd>
-    </dl>
+    <div class="about-side">
+      <Image class="portrait" src={doctor} alt={`${clinic.doctor.name} at the clinic`} width={900} />
+      <dl class="cred">
+        <dt>Qualification</dt>
+        <dd>{clinic.doctor.qualification}</dd>
+        <dt>Continuing education</dt>
+        <dd>Certified in advanced endodontics (Simplified Endodontics)</dd>
+        <dt>Focus</dt>
+        <dd>Implantology, painless endodontics, family &amp; pediatric dentistry</dd>
+        <dt>Patients say</dt>
+        <dd>{clinic.rating.value}★ across {clinic.rating.count} Google reviews</dd>
+      </dl>
+    </div>
     <div class="about-copy">
       <p class="eyebrow">Your dentist</p>
       <h2 class="name">{clinic.doctor.name}</h2>
@@ -26,8 +31,7 @@ import { clinic } from "../data/clinic";
       <p>
         Her practice is built on a simple belief: dental treatment shouldn’t be something you
         dread. Patients consistently describe the clinic as caring, hygienic and unhurried — a
-        place where every step of treatment is explained before it begins, and where you’re guided
-        honestly on what you actually need.
+        place where every step of treatment is explained before it begins.
       </p>
       <p>
         At her Wanwadi clinic she combines that approach with modern equipment and a special focus

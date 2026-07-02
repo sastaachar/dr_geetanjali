@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import baImplant from "../assets/ba-implant.jpeg";
+import baCleaning1 from "../assets/ba-cleaning-1.jpeg";
+import baCleaning2 from "../assets/ba-cleaning-2.jpeg";
+import baFilling from "../assets/ba-filling.jpeg";
+import baLaser from "../assets/ba-laser.jpeg";
+import baScaling from "../assets/ba-scaling.jpeg";
+
+const cases = [
+  {
+    img: baImplant,
+    label: "Dental implant",
+    alt: "Missing front tooth restored with a dental implant — before and after",
+  },
+  {
+    img: baCleaning1,
+    label: "Teeth cleaning",
+    alt: "Professional teeth cleaning — before and after",
+  },
+  {
+    img: baFilling,
+    label: "Composite filling",
+    alt: "Tooth-coloured composite filling — before and after",
+  },
+  {
+    img: baLaser,
+    label: "Laser treatment",
+    alt: "Laser dental treatment — before and after",
+  },
+  {
+    img: baScaling,
+    label: "Scaling & polishing",
+    alt: "Scaling and polishing to remove stains and tartar — before and after",
+  },
+  {
+    img: baCleaning2,
+    label: "Stain removal",
+    alt: "Deep stain removal and polish — before and after",
+  },
+];
+---
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Real results</p>
+      <h2>Smiles from our chair</h2>
+      <p>Actual cases treated at the clinic — before on top, after below.</p>
+    </div>
+    <div class="results-grid">
+      {cases.map((c) => (
+        <figure class="case">
+          <Image src={c.img} alt={c.alt} width={720} />
+          <figcaption>{c.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
