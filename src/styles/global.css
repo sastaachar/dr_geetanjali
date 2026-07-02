@@ -49,10 +49,13 @@ header.site-head {
 .brand small { display: block; font-family: var(--body); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose); }
 .site-head nav {
   position: relative;
-  opacity: 0; transform: translateY(-8px); pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
 }
-.site-head[data-scrolled] nav { opacity: 1; transform: none; pointer-events: auto; }
+/* On phones the nav stays hidden until the visitor scrolls; on desktop it is always visible. */
+@media (max-width: 800px) {
+  .site-head nav { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+  .site-head[data-scrolled] nav { opacity: 1; transform: none; pointer-events: auto; }
+}
 nav ul { display: flex; gap: 1.5rem; list-style: none; }
 nav a { text-decoration: none; color: var(--ink); font-size: 0.95rem; }
 nav a:hover { color: var(--rose); }
@@ -79,6 +82,10 @@ nav a.active { color: var(--rose); font-weight: 600; }
   /* Fill the first screen so the next section doesn't peek; capped on unusually tall viewports. */
   min-height: min(calc(100vh - 4.5rem), 56rem);
   min-height: min(calc(100svh - 4.5rem), 56rem);
+}
+/* Desktop: shorter hero so the results gallery starts on the first screen. */
+@media (min-width: 801px) {
+  .hero { min-height: min(calc(78vh - 4.5rem), 44rem); }
 }
 .scroll-cue {
   display: inline-flex; margin-top: 3.5rem; padding: 0.55rem;
