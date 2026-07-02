@@ -22,7 +22,9 @@ export const clinic = {
       "Jambhulkar Chowk, Wanwadi,",
       "Pune, Maharashtra 411040",
     ],
-    mapsUrl: "https://share.google/T87CpfJBVumy9ecPv",
+    // Directions URL with no origin: Google Maps starts from the visitor's current location.
+    mapsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=Dr.+Geetanjali's+Dental+Care.+Implantology,+Jambhulkar+Chowk,+Aastha+Seagull+Society,+Wanwadi,+Pune,+Maharashtra+411040",
   },
   hours: [
     { days: "Monday – Saturday", time: "10 am – 9 pm" },
