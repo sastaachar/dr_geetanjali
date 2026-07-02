@@ -93,7 +93,7 @@ button.call-btn { border: 0; font-family: inherit; cursor: pointer; }
 button.cta-secondary { background: transparent; font-family: inherit; cursor: pointer; }
 
 /* booking modal */
-dialog#book-modal { border: 0; border-radius: 16px; padding: 0; width: min(92vw, 360px); }
+dialog#book-modal { margin: auto; border: 0; border-radius: 16px; padding: 0; width: min(92vw, 360px); }
 dialog#book-modal::backdrop { background: rgba(74, 32, 56, 0.5); }
 .book-card { position: relative; padding: 2rem; text-align: center; }
 .book-card h3 { font-size: 1.4rem; margin-top: 0.35rem; }
