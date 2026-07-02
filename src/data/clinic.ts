@@ -30,7 +30,43 @@ export const clinic = {
   ],
   hoursShort: "Mon–Sat 10 am – 9 pm · Sun 11 am – 5 pm",
   rating: { value: 4.9, count: 67 },
+  // Approximate clinic coordinates (Wanwadi, Pune) for local-search structured data.
+  geo: { lat: 18.4899, lng: 73.8983 },
+  // Public profiles, linked via schema.org sameAs so search engines connect them.
+  profiles: [
+    "https://www.instagram.com/dr.geetanjalis_dentalcare",
+    "https://www.practo.com/pune/doctor/dr-geetanjali-shinde-dentist",
+    "https://www.justdial.com/Pune/Dr-Geetanjalis-Dental-Care-Wanwadi/020PXX20-XX20-240514124542-R9I1_BZDET",
+    "https://www.linkedin.com/in/dr-geetanjali-shinde-26618b233/",
+  ],
 };
+
+export const faqs = [
+  {
+    q: "Where is Dr. Geetanjali’s Dental Care located?",
+    a: "The clinic is at Office No. 205, Aastha Seagull Society, Jambhulkar Chowk, Wanwadi, Pune 411040 — easy to reach from Wanowrie, Salunke Vihar, Fatima Nagar, NIBM Road and Pune Camp.",
+  },
+  {
+    q: "What are the clinic timings? Are you open on Sundays?",
+    a: "We are open all seven days: Monday to Saturday 10 am – 9 pm, and Sunday 11 am – 5 pm. Evening and Sunday appointments make it easy to visit after work or school.",
+  },
+  {
+    q: "Do you place dental implants at the clinic?",
+    a: "Yes — implantology is our specialty. We handle everything from a single missing tooth to full-mouth implant rehabilitation, with planning, placement and the final crown done at the clinic.",
+  },
+  {
+    q: "Is root canal treatment painful?",
+    a: "No. We use modern rotary endodontics with effective local anaesthesia, so root canal treatment is painless for almost all patients and usually finished in one or two visits.",
+  },
+  {
+    q: "Do you treat children?",
+    a: "Yes, we see children regularly — first dental check-ups, cavity care and preventive advice, delivered gently so kids leave without fear of the dentist.",
+  },
+  {
+    q: "How do I book an appointment?",
+    a: "Call or WhatsApp the clinic on 093731 43403. Same-day emergency appointments are kept for sudden pain, swelling or a broken tooth.",
+  },
+];
 
 export const services = [
   {

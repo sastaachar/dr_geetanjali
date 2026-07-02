@@ -134,6 +134,17 @@ blockquote {
 }
 blockquote footer { margin-top: 0.9rem; font-family: var(--body); font-style: normal; font-size: 0.85rem; color: var(--grey); }
 
+/* faq */
+#faq { border-top: 1px solid var(--line); }
+.faq-list { max-width: 46rem; display: grid; gap: 0.75rem; }
+.faq-item { border: 1px solid var(--line); background: var(--porcelain); }
+.faq-item summary {
+  cursor: pointer; padding: 1rem 1.25rem; font-weight: 600; font-size: 1rem;
+}
+.faq-item summary:hover { color: var(--rose); }
+.faq-item[open] summary { border-bottom: 1px solid var(--line); color: var(--rose); }
+.faq-item p { padding: 1rem 1.25rem; color: var(--grey); font-size: 0.975rem; }
+
 /* visit */
 #visit { background: var(--blush); border-top: 1px solid var(--line); }
 .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }

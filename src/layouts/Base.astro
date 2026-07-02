@@ -1,15 +1,19 @@
 ---
 import "../styles/global.css";
-import { clinic } from "../data/clinic";
+import { clinic, faqs } from "../data/clinic";
 
-const title = `${clinic.name} · Implantology — Dentist in Wanwadi, Pune`;
-const description = `${clinic.fullName}, Wanwadi, Pune. Painless root canals, dental implants, smile makeovers and family dentistry by ${clinic.doctor.name}, BDS. Rated ${clinic.rating.value} on Google. Call ${clinic.phoneDisplay}.`;
+const title = "Dentist in Wanwadi, Pune | Dr. Geetanjali’s Dental Care · Implantology";
+const description = `Dentist in Wanwadi, Pune — ${clinic.fullName}. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
-const schema = {
+const dentistSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
+  "@id": canonical + "#clinic",
   name: clinic.fullName,
+  url: canonical,
   telephone: clinic.phoneE164,
+  priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Office No. 205, Aastha Seagull Society, Jambhulkar Chowk",
@@ -18,12 +22,50 @@ const schema = {
     postalCode: "411040",
     addressCountry: "IN",
   },
-  openingHours: ["Mo-Sa 10:00-21:00", "Su 11:00-17:00"],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: clinic.geo.lat,
+    longitude: clinic.geo.lng,
+  },
+  hasMap: clinic.address.mapsUrl,
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "21:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "11:00",
+      closes: "17:00",
+    },
+  ],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: String(clinic.rating.value),
     reviewCount: String(clinic.rating.count),
   },
+  sameAs: clinic.profiles,
+  areaServed: ["Wanwadi", "Wanowrie", "Salunke Vihar", "Fatima Nagar", "NIBM Road", "Pune Camp", "Pune"],
+  medicalSpecialty: "Dentistry",
+  founder: {
+    "@type": "Person",
+    name: clinic.doctor.name,
+    jobTitle: clinic.doctor.role,
+    alumniOf: "Nair Hospital Dental College, Mumbai",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 ---
 
@@ -34,7 +76,25 @@ const schema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Wanwadi, Pune" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={clinic.fullName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(dentistSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </head>
   <body>
     <slot />
