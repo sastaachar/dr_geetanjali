@@ -1,0 +1,24 @@
+---
+import { services } from "../data/clinic";
+---
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What we treat</p>
+      <h2>Complete dental care under one roof</h2>
+      <p>
+        Whether it’s a routine check-up or a full smile makeover, every treatment starts with a
+        clear explanation of what’s needed, why, and what it will cost.
+      </p>
+    </div>
+    <div class="svc-grid">
+      {services.map((s) => (
+        <div class="svc">
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

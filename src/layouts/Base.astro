@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import { clinic } from "../data/clinic";
+
+const title = `${clinic.name} · Implantology — Dentist in Wanwadi, Pune`;
+const description = `${clinic.fullName}, Wanwadi, Pune. Painless root canals, dental implants, smile makeovers and family dentistry by ${clinic.doctor.name}, BDS. Rated ${clinic.rating.value} on Google. Call ${clinic.phoneDisplay}.`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: clinic.fullName,
+  telephone: clinic.phoneE164,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Office No. 205, Aastha Seagull Society, Jambhulkar Chowk",
+    addressLocality: "Wanwadi, Pune",
+    addressRegion: "Maharashtra",
+    postalCode: "411040",
+    addressCountry: "IN",
+  },
+  openingHours: ["Mo-Sa 10:00-21:00", "Su 11:00-17:00"],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: String(clinic.rating.value),
+    reviewCount: String(clinic.rating.count),
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+    <script is:inline define:vars={{ wa: clinic.whatsapp }}>
+      // Phones open tel: links natively; on desktops/tablets route calls to WhatsApp instead.
+      var canCall = /Android|iPhone/i.test(navigator.userAgent);
+      if (!canCall) {
+        document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+          a.href = wa;
+          a.target = "_blank";
+          a.rel = "noopener";
+        });
+      }
+    </script>
+  </body>
+</html>

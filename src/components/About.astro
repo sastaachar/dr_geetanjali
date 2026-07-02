@@ -1,0 +1,39 @@
+---
+import { clinic } from "../data/clinic";
+---
+
+<section id="about">
+  <div class="wrap about-grid">
+    <dl class="cred">
+      <dt>Qualification</dt>
+      <dd>{clinic.doctor.qualification}</dd>
+      <dt>Practice</dt>
+      <dd>{clinic.name} · Implantology, Wanwadi, Pune</dd>
+      <dt>Focus</dt>
+      <dd>Implantology, painless endodontics, family &amp; pediatric dentistry</dd>
+      <dt>Patients say</dt>
+      <dd>{clinic.rating.value}★ across {clinic.rating.count} Google reviews</dd>
+    </dl>
+    <div class="about-copy">
+      <p class="eyebrow">Your dentist</p>
+      <h2 class="name">{clinic.doctor.name}</h2>
+      <p class="role">{clinic.doctor.role}</p>
+      <p>
+        {clinic.doctor.name} is a BDS graduate of Nair Hospital Dental College, Mumbai — one of
+        India’s top dental institutions — with hands-on hospital training across every branch of
+        dental care.
+      </p>
+      <p>
+        Her practice is built on a simple belief: dental treatment shouldn’t be something you
+        dread. Patients consistently describe the clinic as caring, hygienic and unhurried — a
+        place where every step of treatment is explained before it begins, and where you’re guided
+        honestly on what you actually need.
+      </p>
+      <p>
+        At her Wanwadi clinic she combines that approach with modern equipment and a special focus
+        on implantology, restoring smiles for patients from Wanwadi, Wanowrie, Salunke Vihar,
+        Fatima Nagar and across Pune.
+      </p>
+    </div>
+  </div>
+</section>

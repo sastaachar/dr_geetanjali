@@ -1,0 +1,12 @@
+---
+import { clinic } from "../data/clinic";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site">
+  <div class="wrap">
+    <span>© {year} {clinic.fullName}, Wanwadi, Pune</span>
+    <span><a href={`tel:${clinic.phoneE164}`}>{clinic.phoneDisplay}</a></span>
+  </div>
+</footer>

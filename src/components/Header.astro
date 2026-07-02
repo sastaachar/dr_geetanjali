@@ -1,0 +1,19 @@
+---
+import { clinic } from "../data/clinic";
+---
+
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="brand" href="#top">{clinic.name}<small>{clinic.tagline}</small></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#implants">Implants</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+    <a class="call-btn" href={`tel:${clinic.phoneE164}`}>Call {clinic.phoneDisplay}</a>
+  </div>
+</header>

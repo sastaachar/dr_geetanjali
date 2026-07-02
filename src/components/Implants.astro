@@ -1,0 +1,31 @@
+---
+import { clinic, implantSteps } from "../data/clinic";
+---
+
+<section id="implants" class="implant-band">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Our specialty</p>
+      <h2>Implantology: a permanent answer to missing teeth</h2>
+      <p>
+        A dental implant replaces the root of a missing tooth with a small titanium post, topped
+        with a crown that looks, feels and chews like your own. It’s the closest modern dentistry
+        comes to growing a tooth back.
+      </p>
+    </div>
+    <div class="steps">
+      {implantSteps.map((step, i) => (
+        <div class="step">
+          <div class="num">{i + 1}</div>
+          <h3>{step.title}</h3>
+          <p>{step.desc}</p>
+        </div>
+      ))}
+    </div>
+    <div class="cta-row">
+      <a class="cta-secondary" href={`tel:${clinic.phoneE164}`}>
+        Ask about implants — {clinic.phoneDisplay}
+      </a>
+    </div>
+  </div>
+</section>
