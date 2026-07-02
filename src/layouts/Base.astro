@@ -132,6 +132,39 @@ const faqSchema = {
       modal.addEventListener("click", function (e) {
         if (e.target === modal) modal.close();
       });
+
+      // JS-driven smooth scroll for in-page anchors — reliable regardless of
+      // browser support for CSS scroll-behavior.
+      function smoothScrollTo(el) {
+        var header = document.querySelector(".site-head");
+        var offset = (header ? header.offsetHeight : 0) + 16;
+        var startY = window.scrollY;
+        var endY = el.getBoundingClientRect().top + startY - offset;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          window.scrollTo({ top: endY, behavior: "instant" });
+          return;
+        }
+        var duration = 650;
+        var start = null;
+        function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / duration, 1);
+          window.scrollTo({ top: startY + (endY - startY) * ease(p), behavior: "instant" });
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          var id = a.getAttribute("href").slice(1);
+          var el = id && document.getElementById(id);
+          if (!el) return;
+          e.preventDefault();
+          history.pushState(null, "", "#" + id);
+          smoothScrollTo(el);
+        });
+      });
     </script>
   </body>
 </html>
