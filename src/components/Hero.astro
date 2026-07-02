@@ -3,29 +3,16 @@ import { clinic } from "../data/clinic";
 ---
 
 <div class="wrap hero">
-  <div class="hero-grid">
-    <div>
-      <h1>Gentle, precise dentistry for <em>every smile</em> in the family.</h1>
-      <p class="lede">
-        Implants, painless root canals and family dentistry by {clinic.doctor.name}, BDS —
-        in a modern, spotless clinic at Jambhulkar Chowk.
-      </p>
-      <div class="cta-row">
-        <a class="call-btn" href={`tel:${clinic.phoneE164}`}>Book an appointment</a>
-      </div>
-      <p class="rating">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <strong>{clinic.rating.value}</strong> on Google Reviews
-      </p>
-    </div>
-    <aside class="hours-card">
-      <h3>Clinic hours</h3>
-      <table>
-        {clinic.hours.map((h) => (
-          <tr><td>{h.days}</td><td>{h.time}</td></tr>
-        ))}
-      </table>
-      <p class="hours-note">Open all week, with emergency care on call.</p>
-    </aside>
+  <h1>Gentle, precise dentistry for <em>every smile</em> in the family.</h1>
+  <p class="lede">
+    Implants, painless root canals and family dentistry by {clinic.doctor.name}, BDS —
+    in a modern, spotless clinic at Jambhulkar Chowk.
+  </p>
+  <div class="cta-row">
+    <button class="call-btn" data-book>Book an appointment</button>
   </div>
+  <p class="rating">
+    <span class="stars" aria-hidden="true">★★★★★</span>
+    <strong>{clinic.rating.value}</strong> on Google Reviews
+  </p>
 </div>

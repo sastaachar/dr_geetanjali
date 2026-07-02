@@ -98,16 +98,40 @@ const faqSchema = {
   </head>
   <body>
     <slot />
+
+    <dialog id="book-modal" aria-labelledby="book-title">
+      <div class="book-card">
+        <button class="modal-close" aria-label="Close">×</button>
+        <p class="eyebrow">Get in touch</p>
+        <h3 id="book-title">Book an appointment</h3>
+        <div class="book-actions">
+          <a class="call-btn" href={`tel:${clinic.phoneE164}`} data-keep-tel>Call {clinic.phoneDisplay}</a>
+          <a class="call-btn" href={clinic.whatsapp} target="_blank" rel="noopener">WhatsApp us</a>
+          <a class="cta-secondary" href={clinic.address.mapsUrl} target="_blank" rel="noopener">Get directions</a>
+        </div>
+      </div>
+    </dialog>
+
     <script is:inline define:vars={{ wa: clinic.whatsapp }}>
       // Phones open tel: links natively; on desktops/tablets route calls to WhatsApp instead.
+      // Links marked data-keep-tel (the modal already offers WhatsApp separately) are left as-is.
       var canCall = /Android|iPhone/i.test(navigator.userAgent);
       if (!canCall) {
-        document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+        document.querySelectorAll('a[href^="tel:"]:not([data-keep-tel])').forEach(function (a) {
           a.href = wa;
           a.target = "_blank";
           a.rel = "noopener";
         });
       }
+
+      var modal = document.getElementById("book-modal");
+      document.querySelectorAll("[data-book]").forEach(function (btn) {
+        btn.addEventListener("click", function () { modal.showModal(); });
+      });
+      modal.querySelector(".modal-close").addEventListener("click", function () { modal.close(); });
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) modal.close();
+      });
     </script>
   </body>
 </html>

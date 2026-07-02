@@ -11,7 +11,7 @@
   --body: "Avenir Next", Avenir, "Segoe UI", Seravek, system-ui, -apple-system, sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 6.5rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -47,9 +47,16 @@ header.site-head {
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 0.85rem; padding-bottom: 0.85rem; }
 .brand { font-family: var(--display); font-size: 1.15rem; color: var(--ink); text-decoration: none; }
 .brand small { display: block; font-family: var(--body); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose); }
+.site-head nav {
+  position: relative;
+  opacity: 0; transform: translateY(-8px); pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
+}
+.site-head[data-scrolled] nav { opacity: 1; transform: none; pointer-events: auto; }
 nav ul { display: flex; gap: 1.5rem; list-style: none; }
 nav a { text-decoration: none; color: var(--ink); font-size: 0.95rem; }
 nav a:hover { color: var(--rose); }
+nav a.active { color: var(--rose); font-weight: 600; }
 .call-btn {
   background: var(--rose); color: #fff; text-decoration: none;
   padding: 0.65rem 1.5rem; border-radius: 999px; font-weight: 500; font-size: 0.9rem;
@@ -57,20 +64,20 @@ nav a:hover { color: var(--rose); }
 }
 .call-btn:hover { background: var(--berry); }
 @media (max-width: 800px) {
-  .bar { flex-wrap: wrap; row-gap: 0.25rem; }
-  nav { order: 3; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .bar { flex-wrap: wrap; row-gap: 0; }
+  nav { order: 3; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; max-height: 0; }
+  .site-head[data-scrolled] nav { max-height: 3rem; }
   nav::-webkit-scrollbar { display: none; }
-  nav ul { width: max-content; gap: 1.25rem; padding: 0.15rem 0 0.35rem; }
+  nav ul { width: max-content; gap: 1.25rem; padding: 0.15rem 1.5rem 0.45rem 0; }
   nav a { font-size: 0.9rem; white-space: nowrap; }
 }
 
 /* ---------- hero ---------- */
-.hero { padding-top: 4.5rem; padding-bottom: 4rem; }
-.hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
-@media (max-width: 800px) { .hero-grid { grid-template-columns: 1fr; } }
-.hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.75rem 0 1.25rem; }
+.hero { padding-top: 5rem; padding-bottom: 4.5rem; text-align: center; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0 auto 1.25rem; max-width: 24ch; }
 .hero h1 em { font-style: italic; color: var(--rose); }
-.hero p.lede { max-width: 34rem; color: var(--grey); font-size: 1.125rem; }
+.hero p.lede { max-width: 34rem; margin: 0 auto; color: var(--grey); font-size: 1.125rem; }
+.hero .cta-row { justify-content: center; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
 .cta-secondary {
   border: 1.5px solid var(--rose); color: var(--rose); text-decoration: none;
@@ -78,16 +85,25 @@ nav a:hover { color: var(--rose); }
   letter-spacing: 0.03em; white-space: nowrap;
 }
 .cta-secondary:hover { background: var(--blush); }
-.rating { display: flex; align-items: center; gap: 0.6rem; margin-top: 2.25rem; color: var(--grey); font-size: 0.95rem; }
+.rating { display: flex; justify-content: center; align-items: center; gap: 0.6rem; margin-top: 2.25rem; color: var(--grey); font-size: 0.95rem; }
 .stars { color: var(--rosegold); letter-spacing: 0.1em; font-size: 1.05rem; }
 
-.hours-card { background: var(--blush); border: 1px solid var(--line); padding: 1.75rem; }
-.hours-card h3 { font-size: 1.2rem; margin-bottom: 1rem; }
-.hours-card table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.hours-card td { padding: 0.4rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
-.hours-card tr:last-child td { border-bottom: none; }
-.hours-card td:last-child { text-align: right; color: var(--rose); font-weight: 600; }
-.hours-note { margin-top: 1rem; font-size: 0.875rem; color: var(--grey); }
+/* buttons as <button> */
+button.call-btn { border: 0; font-family: inherit; cursor: pointer; }
+button.cta-secondary { background: transparent; font-family: inherit; cursor: pointer; }
+
+/* booking modal */
+dialog#book-modal { border: 0; border-radius: 16px; padding: 0; width: min(92vw, 360px); }
+dialog#book-modal::backdrop { background: rgba(74, 32, 56, 0.5); }
+.book-card { position: relative; padding: 2rem; text-align: center; }
+.book-card h3 { font-size: 1.4rem; margin-top: 0.35rem; }
+.book-actions { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+.book-actions .call-btn, .book-actions .cta-secondary { text-align: center; }
+.modal-close {
+  position: absolute; top: 0.6rem; right: 0.9rem;
+  border: 0; background: none; font-size: 1.5rem; line-height: 1;
+  color: var(--grey); cursor: pointer;
+}
 
 /* ---------- sections ---------- */
 section { padding: 4.5rem 0; }
@@ -193,5 +209,5 @@ footer.site a { color: #E8B4C8; text-decoration: none; }
   header.site-head .call-btn { font-size: 0.82rem; padding: 0.45rem 0.7rem; }
   .hero { padding-top: 3rem; padding-bottom: 3rem; }
   section { padding: 3rem 0; }
-  .hero-grid, .about-grid, .visit-grid, .steps { gap: 2rem; }
+  .about-grid, .visit-grid, .steps { gap: 2rem; }
 }
