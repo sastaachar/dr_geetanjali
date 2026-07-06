@@ -46,7 +46,7 @@ export const clinic = {
 export const faqs = [
   {
     q: "Where is Dr. Geetanjali’s Dental Care located?",
-    a: "The clinic is at Office No. 205, Aastha Seagull Society, Jambhulkar Chowk, Wanwadi, Pune 411040 — easy to reach from Wanowrie, Salunke Vihar, Fatima Nagar, NIBM Road and Pune Camp.",
+    a: "The clinic is at Office No. 205, Aastha Seagull Society, Jambhulkar Chowk, Wanwadi (Wanawadi), Pune 411040 — easy to reach from Wanowrie (Wanowarie), Salunke Vihar, Fatima Nagar, NIBM Road and Pune Camp.",
   },
   {
     q: "What are the clinic timings? Are you open on Sundays?",
