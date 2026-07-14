@@ -1,5 +1,6 @@
 ---
 import { clinic } from "../data/clinic";
+import AppointmentForm from "./AppointmentForm.astro";
 ---
 
 <section id="visit">
@@ -25,6 +26,7 @@ import { clinic } from "../data/clinic";
         <li><strong>Instagram</strong> <a href={clinic.instagram.url} rel="noopener">{clinic.instagram.handle}</a></li>
         <li><strong>Hours</strong> {clinic.hoursShort}</li>
       </ul>
+      <AppointmentForm />
     </div>
   </div>
 </section>
