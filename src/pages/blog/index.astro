@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Visit from "../../components/Visit.astro";
+import Footer from "../../components/Footer.astro";
+import { clinic } from "../../data/clinic";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const title = "Dental Health Articles | Dr. Geetanjali’s Dental Care, Wanowrie, Pune";
+const description = `Straightforward dental health guides from Dr. Geetanjali’s Dental Care, Wanwadi (Wanowrie), Pune — root canals, implants, cleaning, whitening and emergencies explained without jargon.`;
+
+const siteRoot = new URL("/", Astro.site).href;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteRoot },
+    { "@type": "ListItem", position: 2, name: "Blog", item: siteRoot + "blog/" },
+  ],
+};
+
+const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema]}>
+  <Header />
+  <main id="top">
+    <section class="treatment-hero">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Blog</span>
+        </nav>
+        <p class="eyebrow">Patient guides</p>
+        <h1>Dental health, explained simply</h1>
+        <p class="lede">
+          Honest answers to the questions patients actually ask at our clinic in Wanwadi, Pune —
+          written by {clinic.doctor.name}, without jargon or scare tactics.
+        </p>
+      </div>
+    </section>
+
+    <section class="treatment-list">
+      <div class="wrap">
+        <div class="post-list">
+          {posts.map((p) => (
+            <a class="post-card" href={`/blog/${p.id}/`}>
+              <time datetime={p.data.pubDate.toISOString()}>{dateFmt.format(p.data.pubDate)}</time>
+              <h2>{p.data.title}</h2>
+              <p>{p.data.description}</p>
+              <span class="more">Read article →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Visit />
+  </main>
+  <Footer />
+</Base>
