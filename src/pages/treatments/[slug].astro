@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Visit from "../../components/Visit.astro";
@@ -13,6 +14,10 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const t = getTreatment(slug!)!;
 const related = t.related.map((s) => getTreatment(s)!);
+
+const relatedPosts = (await getCollection("blog"))
+  .filter((p) => p.data.treatments.includes(t.slug))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const siteRoot = new URL("/", Astro.site).href;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -146,6 +151,26 @@ const serviceSchema = {
         </div>
       </div>
     </section>
+
+    {relatedPosts.length > 0 && (
+      <section class="related-posts">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">From the blog</p>
+            <h2>Guides on this topic</h2>
+          </div>
+          <div class="post-list">
+            {relatedPosts.map((p) => (
+              <a class="post-card" href={`/blog/${p.id}/`}>
+                <h3>{p.data.title}</h3>
+                <p>{p.data.description}</p>
+                <span class="more">Read article →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
     <Visit />
   </main>

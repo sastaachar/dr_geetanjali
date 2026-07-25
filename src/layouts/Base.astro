@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { clinic } from "../data/clinic";
+import ogImage from "../assets/hero-smile.jpg";
 
 interface Props {
   title?: string;
@@ -93,9 +94,11 @@ const dentistSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_IN" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={new URL(ogImage.src, Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage.src, Astro.site).href} />
 
     <script type="application/ld+json" set:html={JSON.stringify(dentistSchema)} />
     {schemas.map((schema) => (
