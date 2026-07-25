@@ -1,17 +1,31 @@
 ---
 import "../styles/global.css";
-import { clinic, faqs } from "../data/clinic";
+import { clinic } from "../data/clinic";
 
-const title = "Dentist in Wanwadi, Pune | Dr. Geetanjali’s Dental Care · Implantology";
-const description = `Dentist in Wanwadi, Pune — ${clinic.fullName}. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`;
+interface Props {
+  title?: string;
+  description?: string;
+  /** Extra page-specific JSON-LD blocks (FAQPage, BreadcrumbList, …). */
+  schemas?: object[];
+}
+
+const {
+  title = "Dentist in Wanwadi, Pune | Dr. Geetanjali’s Dental Care · Implantology",
+  description = `Dentist in Wanwadi, Pune — ${clinic.fullName}. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`,
+  schemas = [],
+} = Astro.props;
+
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const siteRoot = new URL("/", Astro.site).href;
 
+// The clinic entity is the same on every page, so its @id and url are
+// anchored to the site root rather than the current page.
 const dentistSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
-  "@id": canonical + "#clinic",
+  "@id": siteRoot + "#clinic",
   name: clinic.fullName,
-  url: canonical,
+  url: siteRoot,
   telephone: clinic.phoneE164,
   priceRange: "₹₹",
   address: {
@@ -57,16 +71,6 @@ const dentistSchema = {
     alumniOf: "Nair Hospital Dental College, Mumbai",
   },
 };
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
 ---
 
 <!doctype html>
@@ -94,7 +98,9 @@ const faqSchema = {
     <meta name="twitter:description" content={description} />
 
     <script type="application/ld+json" set:html={JSON.stringify(dentistSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body>
     <slot />

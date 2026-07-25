@@ -1,18 +1,23 @@
 ---
 import { clinic } from "../data/clinic";
+
+// On subpages the section anchors live on the homepage, so prefix with "/".
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const home = isHome ? "" : "/";
 ---
 
 <header class="site-head">
   <div class="wrap bar">
-    <a class="brand" href="#top">{clinic.name}<small>{clinic.tagline}</small></a>
+    <a class="brand" href={isHome ? "#top" : "/"}>{clinic.name}<small>{clinic.tagline}</small></a>
     <nav aria-label="Main">
       <ul>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#implants">Implants</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#visit">Visit</a></li>
+        <li><a href={`${home}#results`}>Results</a></li>
+        <li><a href={`${home}#services`}>Services</a></li>
+        <li><a href="/treatments/">Treatments</a></li>
+        <li><a href={`${home}#implants`}>Implants</a></li>
+        <li><a href={`${home}#about`}>About</a></li>
+        <li><a href={`${home}#reviews`}>Reviews</a></li>
+        <li><a href={`${home}#visit`}>Visit</a></li>
       </ul>
     </nav>
   </div>

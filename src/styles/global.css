@@ -212,6 +212,24 @@ section { padding: 4.5rem 0; }
   color: var(--grey);
 }
 
+/* treatment pages */
+.treatment-hero { padding-top: 3.25rem; padding-bottom: 3.75rem; }
+.treatment-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: 0.35rem 0 1.25rem; max-width: 22ch; }
+.treatment-hero p.lede { max-width: 44rem; color: var(--grey); font-size: 1.08rem; }
+.treatment-hero p.lede + p.lede { margin-top: 0.9rem; }
+.hours-note { margin-top: 1.25rem; color: var(--grey); font-size: 0.9rem; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.85rem; color: var(--grey); margin-bottom: 1.75rem; }
+.breadcrumbs a { color: var(--grey); text-decoration: none; }
+.breadcrumbs a:hover { color: var(--rose); }
+.breadcrumbs [aria-current] { color: var(--ink); }
+.treatment-highlights, .related, .treatment-list { border-top: 1px solid var(--line); }
+/* Highlights come in fours — a 2×2 grid avoids an empty cell. */
+.treatment-highlights .svc-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 800px) { .treatment-highlights .svc-grid { grid-template-columns: 1fr; } }
+.svc-link { display: block; text-decoration: none; color: inherit; }
+.svc-link .more { display: inline-block; margin-top: 0.7rem; font-size: 0.85rem; font-weight: 600; color: var(--rose); }
+.svc-link:hover h3 { color: var(--rose); }
+
 /* about */
 .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; }
 @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
@@ -267,6 +285,13 @@ footer.site {
 }
 footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 footer.site a { color: #E8B4C8; text-decoration: none; }
+footer.site a:hover { color: #fff; }
+.foot-links { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(232, 180, 200, 0.25); }
+.foot-head {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #E8B4C8; margin-bottom: 0.75rem;
+}
+.foot-links ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; padding: 0; margin: 0; }
 
 /* small phones */
 @media (max-width: 480px) {

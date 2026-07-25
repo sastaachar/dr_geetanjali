@@ -1,0 +1,153 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Visit from "../../components/Visit.astro";
+import Footer from "../../components/Footer.astro";
+import { clinic } from "../../data/clinic";
+import { treatments, getTreatment } from "../../data/treatments";
+
+export function getStaticPaths() {
+  return treatments.map((t) => ({ params: { slug: t.slug } }));
+}
+
+const { slug } = Astro.params;
+const t = getTreatment(slug!)!;
+const related = t.related.map((s) => getTreatment(s)!);
+
+const siteRoot = new URL("/", Astro.site).href;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteRoot },
+    { "@type": "ListItem", position: 2, name: "Treatments", item: siteRoot + "treatments/" },
+    { "@type": "ListItem", position: 3, name: t.name, item: pageUrl },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: t.faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: t.name,
+  serviceType: t.name,
+  url: pageUrl,
+  description: t.metaDescription,
+  areaServed: ["Wanwadi", "Wanawadi", "Wanowrie", "Wanowarie", "Salunke Vihar", "Fatima Nagar", "NIBM Road", "Pune Camp", "Pune"],
+  provider: { "@id": siteRoot + "#clinic" },
+};
+---
+
+<Base title={t.title} description={t.metaDescription} schemas={[breadcrumbSchema, faqSchema, serviceSchema]}>
+  <Header />
+  <main id="top">
+    <section class="treatment-hero">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="/treatments/">Treatments</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{t.name}</span>
+        </nav>
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h1>{t.h1}</h1>
+        {t.intro.map((p) => <p class="lede">{p}</p>)}
+        <div class="cta-row">
+          <button class="call-btn" data-book>Book an appointment</button>
+          <a class="cta-secondary" href={clinic.whatsapp} target="_blank" rel="noopener">WhatsApp us</a>
+          <a class="cta-secondary" href={`tel:${clinic.phoneE164}`}>Call {clinic.phoneDisplay}</a>
+        </div>
+        <p class="hours-note">Open all 7 days · {clinic.hoursShort}</p>
+      </div>
+    </section>
+
+    <section class="treatment-highlights">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What you should know</h2>
+        </div>
+        <div class="svc-grid">
+          {t.highlights.map((h) => (
+            <div class="svc">
+              <h3>{h.title}</h3>
+              <p>{h.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {t.steps && (
+      <section class="implant-band">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">What to expect</p>
+            <h2>How it works, step by step</h2>
+          </div>
+          <div class="steps">
+            {t.steps.map((s, i) => (
+              <div class="step">
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Common questions</p>
+          <h2>{t.name} — FAQs</h2>
+        </div>
+        <div class="faq-list">
+          {t.faqs.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="related">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Related treatments</p>
+          <h2>You may also be looking for</h2>
+        </div>
+        <div class="svc-grid">
+          {related.map((r) => (
+            <a class="svc svc-link" href={`/treatments/${r.slug}/`}>
+              <h3>{r.name}</h3>
+              <p>{r.short}</p>
+              <span class="more">Learn more →</span>
+            </a>
+          ))}
+        </div>
+        <div class="cta-row">
+          <a class="cta-secondary" href="/treatments/">All treatments</a>
+        </div>
+      </div>
+    </section>
+
+    <Visit />
+  </main>
+  <Footer />
+</Base>

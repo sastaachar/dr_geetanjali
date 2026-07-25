@@ -13,12 +13,20 @@ import { services } from "../data/clinic";
       </p>
     </div>
     <div class="svc-grid">
-      {services.map((s) => (
-        <div class="svc">
-          <h3>{s.title}</h3>
-          <p>{s.desc}</p>
-        </div>
-      ))}
+      {services.map((s) =>
+        s.href ? (
+          <a class="svc svc-link" href={s.href}>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <span class="more">Learn more →</span>
+          </a>
+        ) : (
+          <div class="svc">
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        )
+      )}
     </div>
   </div>
 </section>

@@ -70,22 +70,27 @@ export const faqs = [
   },
 ];
 
+// href points to the dedicated treatment page where one exists.
 export const services = [
   {
     title: "Dental implants",
     desc: "Single-tooth to full-mouth implant rehabilitation — our specialty, planned and placed in-clinic.",
+    href: "/treatments/dental-implants/",
   },
   {
     title: "Painless root canal",
     desc: "Modern rotary RCT that saves your natural tooth, usually completed comfortably in one or two visits.",
+    href: "/treatments/root-canal-treatment/",
   },
   {
     title: "Check-ups & cleaning",
     desc: "Routine examinations, scaling and polishing to keep gums healthy and problems caught early.",
+    href: "/treatments/teeth-cleaning/",
   },
   {
     title: "Smile makeover",
     desc: "Teeth whitening, reshaping and bonding tailored to your face — subtle, natural-looking results.",
+    href: "/treatments/smile-designing/",
   },
   {
     title: "Braces & alignment",
@@ -94,18 +99,22 @@ export const services = [
   {
     title: "Kids’ dentistry",
     desc: "Gentle, patient care for children — first check-ups, cavity care, and habits that last a lifetime.",
+    href: "/treatments/pediatric-dentistry/",
   },
   {
     title: "Crowns & bridges",
     desc: "Durable, well-matched restorations to rebuild broken or missing teeth.",
+    href: "/treatments/crowns-and-bridges/",
   },
   {
     title: "Extractions",
     desc: "Careful, comfortable removal of damaged or wisdom teeth when saving them isn’t possible.",
+    href: "/treatments/wisdom-tooth-removal/",
   },
   {
     title: "Emergency care",
     desc: "Sudden pain, swelling or a broken tooth? Call us — we keep time for same-day emergencies.",
+    href: "/treatments/emergency-dentist/",
   },
 ];
 
