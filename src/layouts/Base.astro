@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { clinic } from "../data/clinic";
 import ogImage from "../assets/hero-smile.jpg";
+import doctorImage from "../assets/doctor.jpeg";
 
 interface Props {
   title?: string;
@@ -27,6 +28,10 @@ const dentistSchema = {
   "@id": siteRoot + "#clinic",
   name: clinic.fullName,
   url: siteRoot,
+  image: [
+    new URL(doctorImage.src, Astro.site).href,
+    new URL(ogImage.src, Astro.site).href,
+  ],
   telephone: clinic.phoneE164,
   priceRange: "₹₹",
   address: {
