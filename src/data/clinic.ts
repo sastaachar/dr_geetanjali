@@ -2,7 +2,7 @@
 
 export const clinic = {
   name: "Dr. Geetanjali’s Dental Care",
-  tagline: "Implantology · Wanwadi, Pune",
+  tagline: "Implantology · Wanowrie (Wanwadi), Pune",
   fullName: "Dr. Geetanjali’s Dental Care. Implantology",
   doctor: {
     name: "Dr. Geetanjali Shinde",
