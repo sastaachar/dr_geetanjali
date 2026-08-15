@@ -11,7 +11,7 @@ const posts = (await getCollection("blog")).sort(
 );
 
 const title = "Dental Health Articles | Dr. Geetanjali’s Dental Care, Wanowrie, Pune";
-const description = `Straightforward dental health guides from Dr. Geetanjali’s Dental Care, Wanwadi (Wanowrie), Pune — root canals, implants, cleaning, whitening and emergencies explained without jargon.`;
+const description = `Straightforward dental health guides from Dr. Geetanjali’s Dental Care, Wanwadi (Wanowrie), Pune. Root canals, implants, cleaning, whitening and emergencies explained without jargon.`;
 
 const siteRoot = new URL("/", Astro.site).href;
 
@@ -40,7 +40,7 @@ const dateFmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long"
         <p class="eyebrow">Patient guides</p>
         <h1>Dental health, explained simply</h1>
         <p class="lede">
-          Honest answers to the questions patients actually ask at our clinic in Wanwadi, Pune —
+          Honest answers to the questions patients actually ask at our clinic in Wanwadi, Pune,
           written by {clinic.doctor.name}, without jargon or scare tactics.
         </p>
       </div>

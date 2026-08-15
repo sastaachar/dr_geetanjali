@@ -6,7 +6,7 @@ export const GET: APIRoute = ({ site }) => {
   const sitemap = new URL("sitemap-index.xml", site).href;
 
   const body = `# Dr. Geetanjali's Dental Care, Wanowrie (Wanwadi), Pune
-# Everything on this site is public and meant to be indexed — including by the
+# Everything on this site is public and meant to be indexed, including by the
 # AI assistants people increasingly use to find a dentist.
 
 User-agent: *

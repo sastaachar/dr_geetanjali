@@ -15,7 +15,7 @@ interface Props {
 
 const {
   title = "Best Dental Clinic & Dentist in Wanowrie (Wanwadi), Pune | Dr. Geetanjali’s Dental Care",
-  description = `Dr. Geetanjali’s Dental Care — top-rated dentist and dental clinic in Wanowrie (Wanwadi), Pune. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`,
+  description = `Dr. Geetanjali’s Dental Care is a top-rated dentist and dental clinic in Wanowrie (Wanwadi), Pune. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`,
   schemas = [],
   noindex = false,
 } = Astro.props;
@@ -25,7 +25,7 @@ const siteRoot = new URL("/", Astro.site).href;
 // Purpose-built 1200x630 share card (public/og-image.jpg) rather than a raw
 // photo — WhatsApp and Facebook crop to this ratio and skip oversized files.
 const shareCard = new URL("og-image.jpg", Astro.site).href;
-const ogImageAlt = `${clinic.fullName} — dental clinic in Wanowrie (Wanwadi), Pune`;
+const ogImageAlt = `${clinic.fullName}, dental clinic in Wanowrie (Wanwadi), Pune`;
 
 // The clinic entity is the same on every page, so its @id and url are
 // anchored to the site root rather than the current page.
@@ -182,7 +182,7 @@ const dentistSchema = {
         if (e.target === modal) modal.close();
       });
 
-      // JS-driven smooth scroll for in-page anchors — reliable regardless of
+      // JS-driven smooth scroll for in-page anchors, reliable regardless of
       // browser support for CSS scroll-behavior.
       function smoothScrollTo(el) {
         var header = document.querySelector(".site-head");
