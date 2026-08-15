@@ -27,4 +27,22 @@ import { clinic } from "../data/clinic";
       </ul>
     </div>
   </div>
+
+  <div class="wrap">
+    <!-- Lazy-loaded so the map never blocks first paint; the address above is
+         the real content, this is orientation. -->
+    <div class="map-frame">
+      <iframe
+        src={clinic.address.mapEmbedUrl}
+        title={`Map showing ${clinic.fullName} at Jambhulkar Chowk, Wanwadi, Pune`}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p class="map-note">
+      Jambhulkar Chowk, Wanwadi — a few minutes from Wanowrie, Fatima Nagar, Salunke Vihar
+      and NIBM Road. <a href={clinic.address.mapPlaceUrl} rel="noopener">Open in Google Maps</a>
+    </p>
+  </div>
 </section>

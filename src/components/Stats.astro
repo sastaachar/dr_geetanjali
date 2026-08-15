@@ -1,0 +1,17 @@
+---
+import { stats } from "../data/clinic";
+---
+
+<section class="stats-band" aria-label="The clinic in numbers">
+  <div class="wrap">
+    <div class="stats-grid">
+      {stats.map((s) => (
+        <div class="stat">
+          <p class="stat-value">{s.value}</p>
+          <p class="stat-label">{s.label}</p>
+          <p class="stat-detail">{s.detail}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

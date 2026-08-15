@@ -1,5 +1,9 @@
 // Single source of truth for clinic details used across the site.
 
+// The clinic exactly as Google Maps lists it — used to build the embedded map.
+const mapQuery =
+  "Dr. Geetanjali's Dental Care. Implantology, Jambhulkar Chowk, Aastha Seagull Society, Wanwadi, Pune, Maharashtra 411040";
+
 export const clinic = {
   name: "Dr. Geetanjali’s Dental Care",
   tagline: "Implantology · Wanowrie (Wanwadi), Pune",
@@ -25,6 +29,11 @@ export const clinic = {
     // Directions URL with no origin: Google Maps starts from the visitor's current location.
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&destination=Dr.+Geetanjali's+Dental+Care.+Implantology,+Jambhulkar+Chowk,+Aastha+Seagull+Society,+Wanwadi,+Pune,+Maharashtra+411040",
+    // Keyless Google Maps embed — no API key or billing account needed, and the
+    // pin lands on the clinic's own listing rather than a bare coordinate.
+    mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=16&hl=en&output=embed`,
+    // Where the map's "view larger map" link goes.
+    mapPlaceUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`,
   },
   hours: [
     { days: "Monday – Saturday", time: "10 am – 9 pm" },
@@ -42,6 +51,32 @@ export const clinic = {
     "https://www.linkedin.com/in/dr-geetanjali-shinde-26618b233/",
   ],
 };
+
+// Practice milestones for the stats band. Kept out of schema.org markup on
+// purpose — structured data should only carry numbers Google can verify, and
+// these are the clinic's own counts.
+export const stats = [
+  {
+    value: "1,000+",
+    label: "Teeth fixed",
+    detail: "Fillings, root canals, extractions and implants completed in our chair.",
+  },
+  {
+    value: "100s",
+    label: "Smiles saved",
+    detail: "Makeovers, whitening and restorations that patients actually smile with.",
+  },
+  {
+    value: `${clinic.rating.value}★`,
+    label: `Rated by ${clinic.rating.count} patients`,
+    detail: "Our Google rating, written by the people who sat in the chair.",
+  },
+  {
+    value: "7 days",
+    label: "Open every week",
+    detail: clinic.hoursShort,
+  },
+];
 
 export const faqs = [
   {

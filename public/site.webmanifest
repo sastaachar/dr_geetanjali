@@ -1,0 +1,17 @@
+{
+  "name": "Dr. Geetanjali's Dental Care · Implantology",
+  "short_name": "Dr. Geetanjali",
+  "description": "Dental clinic in Wanowrie (Wanwadi), Pune — implants, painless root canal, cleaning and kids' dentistry.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#C2477A",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
