@@ -335,15 +335,9 @@ blockquote footer { margin-top: 0.9rem; font-family: var(--body); font-style: no
   overflow: hidden; background: var(--porcelain);
   box-shadow: 0 14px 34px rgba(74, 32, 56, 0.08);
 }
-/* Google's embed is cross-origin, so it can't be restyled directly. This wash
-   tints it to the site's rose instead. `color` blending swaps only hue and
-   saturation and leaves luminance alone, so street names, the pin and Google's
-   attribution all stay readable. Opacity is deliberately high: partial values
-   leave the blue water half-converted and it reads as muddy purple. */
-.map-frame::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: var(--rose); mix-blend-mode: color; opacity: 0.75;
-}
+/* Google's embed is cross-origin: CSS can only tint the whole iframe at once,
+   never individual features, so the map keeps its own colours and the rose
+   comes from the frame around it instead. */
 .map-frame iframe { display: block; width: 100%; height: 22rem; border: 0; }
 @media (max-width: 800px) { .map-frame iframe { height: 16rem; } }
 .map-note { margin-top: 0.9rem; font-size: 0.9rem; color: var(--grey); }
