@@ -9,16 +9,23 @@ interface Props {
   description?: string;
   /** Extra page-specific JSON-LD blocks (FAQPage, BreadcrumbList, …). */
   schemas?: object[];
+  /** Keep a page out of search results (the 404, for example). */
+  noindex?: boolean;
 }
 
 const {
   title = "Best Dental Clinic & Dentist in Wanowrie (Wanwadi), Pune | Dr. Geetanjali’s Dental Care",
-  description = `Dr. Geetanjali’s Dental Care — top-rated dentist and dental clinic in Wanowrie (Wanwadi), Pune. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`,
+  description = `Dr. Geetanjali’s Dental Care is a top-rated dentist and dental clinic in Wanowrie (Wanwadi), Pune. Dental implants, painless root canal, teeth whitening, kids’ dentistry. Rated ${clinic.rating.value}★ (${clinic.rating.count} Google reviews). Open all 7 days. Call ${clinic.phoneDisplay}.`,
   schemas = [],
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const siteRoot = new URL("/", Astro.site).href;
+// Purpose-built 1200x630 share card (public/og-image.jpg) rather than a raw
+// photo — WhatsApp and Facebook crop to this ratio and skip oversized files.
+const shareCard = new URL("og-image.jpg", Astro.site).href;
+const ogImageAlt = `${clinic.fullName}, dental clinic in Wanowrie (Wanwadi), Pune`;
 
 // The clinic entity is the same on every page, so its @id and url are
 // anchored to the site root rather than the current page.
@@ -85,6 +92,10 @@ const dentistSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Analytics is third-party and blocking, so warm the connections early. -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <!-- Google tag (gtag.js) -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-T3WVJQP44V"></script>
     <script is:inline>
@@ -98,10 +109,15 @@ const dentistSchema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon-32.png`} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
+    <link rel="manifest" href={`${import.meta.env.BASE_URL}site.webmanifest`} />
     <link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
-    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#C2477A" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <meta name="geo.region" content="IN-MH" />
     <meta name="geo.placename" content="Wanowrie (Wanwadi), Pune" />
+    <meta name="ICBM" content={`${clinic.geo.lat}, ${clinic.geo.lng}`} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={clinic.fullName} />
@@ -109,11 +125,15 @@ const dentistSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_IN" />
-    <meta property="og:image" content={new URL(ogImage.src, Astro.site).href} />
+    <meta property="og:image" content={shareCard} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage.src, Astro.site).href} />
+    <meta name="twitter:image" content={shareCard} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <script type="application/ld+json" set:html={JSON.stringify(dentistSchema)} />
     {schemas.map((schema) => (
@@ -162,7 +182,7 @@ const dentistSchema = {
         if (e.target === modal) modal.close();
       });
 
-      // JS-driven smooth scroll for in-page anchors — reliable regardless of
+      // JS-driven smooth scroll for in-page anchors, reliable regardless of
       // browser support for CSS scroll-behavior.
       function smoothScrollTo(el) {
         var header = document.querySelector(".site-head");

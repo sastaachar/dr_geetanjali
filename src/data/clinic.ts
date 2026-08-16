@@ -1,5 +1,9 @@
 // Single source of truth for clinic details used across the site.
 
+// The clinic exactly as Google Maps lists it — used to build the embedded map.
+const mapQuery =
+  "Dr. Geetanjali's Dental Care. Implantology, Jambhulkar Chowk, Aastha Seagull Society, Wanwadi, Pune, Maharashtra 411040";
+
 export const clinic = {
   name: "Dr. Geetanjali’s Dental Care",
   tagline: "Implantology · Wanowrie (Wanwadi), Pune",
@@ -25,6 +29,11 @@ export const clinic = {
     // Directions URL with no origin: Google Maps starts from the visitor's current location.
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&destination=Dr.+Geetanjali's+Dental+Care.+Implantology,+Jambhulkar+Chowk,+Aastha+Seagull+Society,+Wanwadi,+Pune,+Maharashtra+411040",
+    // Keyless Google Maps embed — no API key or billing account needed, and the
+    // pin lands on the clinic's own listing rather than a bare coordinate.
+    mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=16&hl=en&output=embed`,
+    // Where the map's "view larger map" link goes.
+    mapPlaceUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`,
   },
   hours: [
     { days: "Monday – Saturday", time: "10 am – 9 pm" },
@@ -43,10 +52,36 @@ export const clinic = {
   ],
 };
 
+// Practice milestones for the stats band. Kept out of schema.org markup on
+// purpose — structured data should only carry numbers Google can verify, and
+// these are the clinic's own counts.
+export const stats = [
+  {
+    value: "1,000+",
+    label: "Teeth fixed",
+    detail: "Fillings, root canals, extractions and implants completed in our chair.",
+  },
+  {
+    value: "100s",
+    label: "Smiles saved",
+    detail: "Makeovers, whitening and restorations that patients actually smile with.",
+  },
+  {
+    value: `${clinic.rating.value}★`,
+    label: `Rated by ${clinic.rating.count} patients`,
+    detail: "Our Google rating, written by the people who sat in the chair.",
+  },
+  {
+    value: "7 days",
+    label: "Open every week",
+    detail: clinic.hoursShort,
+  },
+];
+
 export const faqs = [
   {
     q: "Where is Dr. Geetanjali’s Dental Care located?",
-    a: "The clinic is at Office No. 205, Aastha Seagull Society, Jambhulkar Chowk, Wanwadi (Wanawadi), Pune 411040 — easy to reach from Wanowrie (Wanowarie), Salunke Vihar, Fatima Nagar, NIBM Road and Pune Camp.",
+    a: "The clinic is at Office No. 205, Aastha Seagull Society, Jambhulkar Chowk, Wanwadi (Wanawadi), Pune 411040. It is easy to reach from Wanowrie (Wanowarie), Salunke Vihar, Fatima Nagar, NIBM Road and Pune Camp.",
   },
   {
     q: "What are the clinic timings? Are you open on Sundays?",
@@ -54,7 +89,7 @@ export const faqs = [
   },
   {
     q: "Do you place dental implants at the clinic?",
-    a: "Yes — implantology is our specialty. We handle everything from a single missing tooth to full-mouth implant rehabilitation, with planning, placement and the final crown done at the clinic.",
+    a: "Yes, implantology is our specialty. We handle everything from a single missing tooth to full-mouth implant rehabilitation, with planning, placement and the final crown done at the clinic.",
   },
   {
     q: "Is root canal treatment painful?",
@@ -62,7 +97,7 @@ export const faqs = [
   },
   {
     q: "Do you treat children?",
-    a: "Yes, we see children regularly — first dental check-ups, cavity care and preventive advice, delivered gently so kids leave without fear of the dentist.",
+    a: "Yes, we see children regularly: first dental check-ups, cavity care and preventive advice, delivered gently so kids leave without fear of the dentist.",
   },
   {
     q: "How do I book an appointment?",
@@ -74,7 +109,7 @@ export const faqs = [
 export const services = [
   {
     title: "Dental implants",
-    desc: "Single-tooth to full-mouth implant rehabilitation — our specialty, planned and placed in-clinic.",
+    desc: "Single-tooth to full-mouth implant rehabilitation. Our specialty, planned and placed in-clinic.",
     href: "/treatments/dental-implants/",
   },
   {
@@ -89,7 +124,7 @@ export const services = [
   },
   {
     title: "Smile makeover",
-    desc: "Teeth whitening, reshaping and bonding tailored to your face — subtle, natural-looking results.",
+    desc: "Teeth whitening, reshaping and bonding tailored to your face, for subtle, natural-looking results.",
     href: "/treatments/smile-designing/",
   },
   {
@@ -98,7 +133,7 @@ export const services = [
   },
   {
     title: "Kids’ dentistry",
-    desc: "Gentle, patient care for children — first check-ups, cavity care, and habits that last a lifetime.",
+    desc: "Gentle, patient care for children: first check-ups, cavity care, and habits that last a lifetime.",
     href: "/treatments/pediatric-dentistry/",
   },
   {
@@ -113,7 +148,7 @@ export const services = [
   },
   {
     title: "Emergency care",
-    desc: "Sudden pain, swelling or a broken tooth? Call us — we keep time for same-day emergencies.",
+    desc: "Sudden pain, swelling or a broken tooth? Call us. We keep time for same-day emergencies.",
     href: "/treatments/emergency-dentist/",
   },
 ];
@@ -129,7 +164,7 @@ export const implantSteps = [
   },
   {
     title: "Your new tooth",
-    desc: "Once healed, a custom-matched crown is fixed on the implant — and you eat, speak and smile as before.",
+    desc: "Once healed, a custom-matched crown is fixed on the implant, and you eat, speak and smile as before.",
   },
 ];
 
