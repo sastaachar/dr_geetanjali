@@ -13,7 +13,7 @@ Whitening gels release oxygen molecules that travel into the enamel and break up
 
 ## The side effect that is real: temporary sensitivity
 
-Around half of whitening patients feel some sensitivity during or shortly after treatment: a zing to cold that fades within a day or two. It happens because the pores of the enamel are temporarily more open. It's uncomfortable, not harmful, and manageable: we adjust gel strength and timing, and a desensitising toothpaste before and after treatment makes a real difference.
+Around half of whitening patients feel some sensitivity during or shortly after treatment: a zing to cold that fades within a day or two. It happens because the pores of the enamel are temporarily more open. It's uncomfortable, not harmful, and manageable: we adjust gel strength and timing, and a desensitising toothpaste before and after treatment makes a real difference. If cold sensitivity is a constant for you rather than a passing after-effect, [the causes worth ruling out are different ones](/blog/sensitive-teeth-cold-water/).
 
 ## Where whitening *can* go wrong
 

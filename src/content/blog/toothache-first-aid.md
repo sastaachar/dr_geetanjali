@@ -41,4 +41,4 @@ These are signs of infection spreading beyond the tooth. Don't wait these out.
 
 Pain that vanishes on its own didn't get better. A nerve that dies stops reporting. The infection continues silently until it returns as a swelling. A toothache severe enough to keep you up has earned an examination, pain or no pain the next morning.
 
-We keep same-day emergency slots at our Wanwadi clinic, seven days a week. [See what we handle as dental emergencies](/treatments/emergency-dentist/), or save the number now: 093731 43403.
+We keep same-day emergency slots at our Wanwadi clinic, seven days a week. If your problem is a broken or knocked-out tooth rather than pain, we have a [separate first-aid guide for the first hour](/blog/chipped-or-broken-tooth/). [See what we handle as dental emergencies](/treatments/emergency-dentist/), or save the number now: 093731 43403.
