@@ -34,4 +34,4 @@ The maintenance routine is unglamorous and effective: brush twice daily, clean b
 
 An implant is the closest dentistry gets to a permanent tooth replacement, and it's a partnership. We plan and place it right; you keep it clean; it keeps working.
 
-Thinking about replacing a missing tooth? Implantology is our specialty at the clinic in Wanwadi. [Read how dental implant treatment works, step by step](/treatments/dental-implants/).
+Thinking about replacing a missing tooth? Implantology is our specialty at the clinic in Wanwadi. [Read how dental implant treatment works, step by step](/treatments/dental-implants/), or see [what actually decides implant cost](/blog/dental-implant-cost-in-pune/) before you compare quotes.

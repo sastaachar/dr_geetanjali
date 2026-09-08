@@ -21,7 +21,7 @@ Dentures come out at night and get cleaned separately; they're simple but they'r
 
 ## The cost logic
 
-Dentures cost significantly less upfront. That's real and it matters. The fuller picture: dentures typically need relining as the bone changes and remaking every 5–8 years, while a well-maintained implant is usually a one-time investment. Over 15–20 years, the gap narrows considerably. Neither choice is wrong; they're different payment shapes for different budgets.
+Dentures cost significantly less upfront. That's real and it matters. The fuller picture: dentures typically need relining as the bone changes and remaking every 5–8 years, while a well-maintained implant is usually a one-time investment. Over 15–20 years, the gap narrows considerably. Neither choice is wrong; they're different payment shapes for different budgets. If you are collecting implant quotes, [here is what should be included in one](/blog/dental-implant-cost-in-pune/).
 
 ## Who suits what
 

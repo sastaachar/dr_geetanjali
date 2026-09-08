@@ -19,7 +19,7 @@ If you've searched for root canal prices in Pune, you've probably seen numbers r
 
 ## Why the cheapest quote is often the most expensive
 
-A root canal that fails because canals were missed or poorly sealed has to be redone, or the tooth extracted and replaced with an implant, which costs several times more than the root canal would have. Paying a fair price once is cheaper than paying a low price twice.
+A root canal that fails because canals were missed or poorly sealed has to be redone, or the tooth extracted and replaced with an implant, which [costs several times more](/blog/dental-implant-cost-in-pune/) than the root canal would have. Paying a fair price once is cheaper than paying a low price twice.
 
 ## What you should expect from any clinic
 

@@ -33,4 +33,6 @@ Some sensitivity for a day or two after a deep cleaning is common, especially if
 
 Fifteen to thirty minutes: an examination, ultrasonic scaling, polishing, and honest advice about anything we noticed. Most patients describe it as ticklish rather than painful, and everyone leaves with that glassy-smooth feeling you can't get from a brush.
 
+If your gums bleed when you brush, that is the sign worth acting on first, and we have explained [why it happens and what fixes it](/blog/bleeding-gums-when-brushing/).
+
 If it's been more than six months, [see what scaling and polishing involves at our Wanwadi clinic](/treatments/teeth-cleaning/). Your gums will thank you.
